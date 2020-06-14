@@ -1,0 +1,21 @@
+version: '2.1'
+services:
+  ## ngrok allows you to expose a web server running on your local machine to the internet,
+  ## Access to http://127.0.0.1:4040 , Ngrok Web Interface.
+  ngrok:
+    image: lukaszlach/ngrok
+    environment:
+      - "NGROK_AUTH=${NGROK_AUTH}"
+    ports:
+      - 4040:4040
+
+  php-apache:
+    image: "php:${PHP_APACHE_VERSION:-7.3}-apache"
+    command: /bin/bash -c "a2enmod rewrite ; apache2-foreground"
+    ports:
+      - ${PHP_APACHE_PORT:-8080}:80
+
+  tomcat:
+    image: "andreptb/tomcat:${TOMCAT_VERSION:-8}-${TOMCAT_JDK:-jdk8}"
+    ports:
+      - ${TOMCAT_HTTP_PORT:-8081}:8080

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  apache:
+    extends:
+      file: ../common/docker-services.yml
+      service: php-apache
+    volumes:
+      - ./httpd.conf:/etc/apache2/sites-enabled/apache2.conf
+      - ./public:/var/www/html
+
+  ngrok:
+    environment:
+      - "NGROK_PORT=apache:80"
+    extends:
+      file: ../common/docker-services.yml
+      service: ngrok

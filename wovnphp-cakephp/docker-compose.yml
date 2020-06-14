@@ -1,0 +1,30 @@
+version: '2.1'
+services:
+  apache:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: wovnphp-apache:cakephp
+    ports:
+      - 8081:80
+    volumes:
+      - ./httpd.conf:/etc/apache2/sites-enabled/apache2.conf
+      - ./app:/var/www
+      - ./app/webroot:/var/www/html
+
+  composer:
+    image: composer
+    working_dir: /app
+    volumes:
+      - composer-cache:/tmp
+      - .:/app
+
+  ngrok:
+    environment:
+      - "NGROK_PORT=apache:80"
+    extends:
+      file: ../common/docker-services.yml
+      service: ngrok
+
+volumes:
+  composer-cache:
