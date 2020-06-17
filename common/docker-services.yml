@@ -17,3 +17,8 @@ services:
     image: "andreptb/tomcat:${TOMCAT_VERSION:-8}-${TOMCAT_JDK:-jdk8}"
     ports:
       - ${TOMCAT_HTTP_PORT:-8081}:8080
+
+  mail-catcher:
+    image: sj26/mailcatcher
+    ports:
+      - ${MAILCATCHER_HTTP_PORT:-1080}:1080
