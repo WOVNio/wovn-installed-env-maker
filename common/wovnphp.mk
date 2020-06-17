@@ -3,6 +3,7 @@
 WOVNPHP_BRANCH_NAME  ?= master
 WOVNPHP_INSTALL_DIR  ?= public
 WOVNPHP_HTACCESS     ?= yes
+WOVNPHP_WOVN_INDEX   ?= yes
 WOVNPHP_DOWNLOAD_URL  = https://github.com/WOVNio/WOVN.php/archive/$(WOVNPHP_BRANCH_NAME).zip
 
 DIR_SUFFIX = $(subst /,-,$(WOVNPHP_BRANCH_NAME))
@@ -14,7 +15,10 @@ wovnphp: clean-wovnphp install-wovnphp
 .PHONY: clean-wovnphp
 clean-wovnphp:
 	rm -rf $(WOVNPHP_INSTALL_DIR)/WOVN.php
-	rm -f $(WOVNPHP_INSTALL_DIR)/wovn.ini $(WOVNPHP_INSTALL_DIR)/wovn_index.php
+	rm -f $(WOVNPHP_INSTALL_DIR)/wovn.ini
+ifeq ($(WOVNPHP_WOVN_INDEX),yes)
+	rm -f $(WOVNPHP_INSTALL_DIR)/wovn_index.php
+endif
 ifeq ($(WOVNPHP_HTACCESS),yes)
 	rm -f $(WOVNPHP_INSTALL_DIR)/.htaccess
 endif
@@ -38,7 +42,9 @@ $(WOVNPHP_INSTALL_DIR)/wovn.ini: $(WOVNPHP_INSTALL_DIR)/WOVN.php
 .PHONY: install-wovnphp
 install-wovnphp: $(WOVNPHP_INSTALL_DIR)/WOVN.php
 	cp -f $(WOVNPHP_INSTALL_DIR)/WOVN.php/wovn.ini.sample $(WOVNPHP_INSTALL_DIR)/wovn.ini
+ifeq ($(WOVNPHP_WOVN_INDEX),yes)
 	cp -f $(WOVNPHP_INSTALL_DIR)/WOVN.php/wovn_index_sample.php $(WOVNPHP_INSTALL_DIR)/wovn_index.php
+endif
 ifeq ($(WOVNPHP_HTACCESS),yes)
 	cp -f $(WOVNPHP_INSTALL_DIR)/WOVN.php/htaccess_sample $(WOVNPHP_INSTALL_DIR)/.htaccess
 endif
