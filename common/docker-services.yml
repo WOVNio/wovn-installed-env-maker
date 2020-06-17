@@ -4,8 +4,6 @@ services:
   ## Access to http://127.0.0.1:4040 , Ngrok Web Interface.
   ngrok:
     image: lukaszlach/ngrok
-    environment:
-      - "NGROK_AUTH=${NGROK_AUTH}"
     ports:
       - 4040:4040
 
