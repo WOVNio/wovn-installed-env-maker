@@ -1,9 +1,0 @@
-## ngrok allows you to expose a web server running on your local machine to the internet,
-## Access to http://127.0.0.1:4040 , Ngrok Web Interface.
-ngrok:
-  image: lukaszlach/ngrok
-  environment:
-    - "NGROK_AUTH=${NGROK_AUTH}"
-  ports:
-    - 4040:4040
-  command: [ ngrok, http, "apache:80", --log, /dev/stdout, --log-format, term ]
