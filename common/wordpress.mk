@@ -4,6 +4,7 @@ WP_PATH       ?= /var/www/html
 WP_LOCAL_PATH ?= public
 WP_SITE_URL   ?= http://127.0.0.1:8080/
 WP_LANG_JA    ?= yes
+WP_MULTISITE  ?= no
 
 WP_ADMIN_USER ?= admin
 WP_ADMIN_PASS ?= admin
@@ -39,8 +40,13 @@ $(WP_LOCAL_PATH)/index.php:
 
 .PHONY: install-wordpress-core
 install-wordpress-core: $(WP_LOCAL_PATH)/index.php
+ifeq ($(WP_MULTISITE),yes)
+	$(WP_CLI) core multisite-install --path=$(WP_PATH) --url="$(WP_SITE_URL)" --title="$(WP_SITE_TITLE)" \
+		--admin_user=$(WP_ADMIN_USER) --admin_password=$(WP_ADMIN_PASS) --admin_email=$(WP_ADMIN_MAIL)
+else
 	$(WP_CLI) core install --path=$(WP_PATH) --url="$(WP_SITE_URL)" --title="$(WP_SITE_TITLE)" \
 		--admin_user=$(WP_ADMIN_USER) --admin_password=$(WP_ADMIN_PASS) --admin_email=$(WP_ADMIN_MAIL)
+endif
 ifeq ($(WP_LANG_JA),yes)
 	$(WP_CLI) core language install ja --activate
 endif
