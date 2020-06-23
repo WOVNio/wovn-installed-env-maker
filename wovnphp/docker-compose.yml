@@ -8,6 +8,21 @@ services:
       - ./httpd.conf:/etc/apache2/sites-enabled/apache2.conf
       - ./public:/var/www/html
 
+  nginx:
+    image: nginx:latest
+    ports:
+      - 8081:80
+    volumes:
+      - ./nginx-site.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx-include.d:/etc/nginx/include.d
+      - ./public:/var/www/html
+
+  php-fpm:
+    image: php:7-fpm
+    working_dir: /var/www/html
+    volumes:
+      - ./public:/var/www/html
+
   ngrok:
     environment:
       - "NGROK_PORT=apache:80"
