@@ -1,6 +1,8 @@
 
 env:
-  matrix:
+  global:
+    - GID=0
+  jobs:
     - TARGET="wovnphp"
     - TARGET="wovnphp-cakephp"
     - TARGET="wovnphp-wordpress"

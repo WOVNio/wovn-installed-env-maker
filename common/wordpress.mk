@@ -24,9 +24,13 @@ WP_POPULAR_PLUGIN_LIST    ?= all-in-one-seo-pack \
 	wp-multibyte-patch
 
 WP_SERVICE ?= wordpress
-WP_CLI     ?= docker-compose run --rm -w $(WP_PATH) wp_cli wp
 WP_SED     ?= docker-compose run --rm -w $(WP_PATH) $(WP_SERVICE) /bin/sed -i""
 
+ifeq ($(TRAVIS),true)
+WP_CLI     ?= docker-compose run --user 0 --rm -w $(WP_PATH) wp_cli wp
+else
+WP_CLI     ?= docker-compose run --rm -w $(WP_PATH) wp_cli wp
+endif
 
 .PHONY: clean-wordpress
 clean-wordpress:
