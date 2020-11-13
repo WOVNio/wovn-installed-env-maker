@@ -1,7 +1,7 @@
 # WOVN Installed Environment Maker
 
-    WOVNの各ライブラリのインストール環境を作成するための Makefile, Docker を含んでいます。
-    ライブラリの動作検証を想定したものになっています。なお、動作を保証するものではありません。
+WOVNの各ライブラリのインストール環境を作成するための `Makefile`, `docker-compose.yml` を含んでいます。
+ライブラリの動作検証を想定したものになっています。なお、動作を保証するものではありません。
 
 ## 環境作成
 
@@ -19,39 +19,42 @@
 
 ## Makefile 変数
 
-| 変数名                    | 概要                                   | 既定値  |
-|---------------------------|----------------------------------------|---------|
-| WOVNPHP_BRANCH_NAME       | WOVN.phpのインストールバージョン       | master  |
-| WOVNPHP_HTACCESS          | サンプル .htaccess のインストール      | yes     |
-| WOVNPHP_WOVN_INDEX        | wovn_index.phpのインストール           | yes     |
-| WOVNJAVA_VERSION          | WOVN.javaのインストールバージョン      | 1.2.0   |
-| WP_LANG_JA                | 日本語UIのインストール                 | yes     |
-| WP_MULTISITE              | WordPressのマルチサイト化              | yes     |
-| WP_ADMIN_USER             | WordPress ユーザ                       | admin   |
-| WP_ADMIN_PASS             | WordPress パスワード                   | admin   |
-| WP_INSTALL_WOVNIO_PLUGIN  | WordPress Pluginのインストール         | yes     |
-| WP_INSTALL_POPULAR_PLUGIN | WordPress 人気プラグインのインストール | yes     |
+| 変数名                       | 概要                                   | 既定値  |
+|------------------------------|----------------------------------------|---------|
+| WOVNPHP\_BRANCH\_NAME        | WOVN.phpのインストールバージョン       | master  |
+| WOVNPHP\_HTACCESS            | サンプル .htaccess のインストール      | yes     |
+| WOVNPHP\_WOVN\_INDEX         | wovn_index.phpのインストール           | yes     |
+| WOVNJAVA\_VERSION            | WOVN.javaのインストールバージョン      | 1.2.0   |
+| WP\_LANG\_JA                 | 日本語UIのインストール                 | yes     |
+| WP\_MULTISITE                | WordPressのマルチサイト化              | yes     |
+| WP\_ADMIN\_USER              | WordPress ユーザ                       | admin   |
+| WP\_ADMIN\_PASS              | WordPress パスワード                   | admin   |
+| WP\_INSTALL\_WOVNIO\_PLUGIN  | WordPress Pluginのインストール         | yes     |
+| WP\_INSTALL\_POPULAR\_PLUGIN | WordPress 人気プラグインのインストール | yes     |
 
 ### 例
 
-    Makefileの変数は下記のように上書きを行い指定のバージョンをインストールします。
+Makefileの変数は下記のように上書きを行い指定のバージョンをインストールします。
 
 ```
+# Example.1
 make WOVNPHP_BRANCH_NAME=1.0.0 WOVNPHP_WOVN_INDEX=no
+
+# Example.2
 make WP_LANG_JA=no WP_MULTISITE=yes WP_INSTALL_POPULAR_PLUGIN=yes
 ```
 
 ## Docker Compose 変数
 
-| 変数名             | 概要                | 既定値  |
-|--------------------|---------------------|---------|
-| PHP_APACHE_VERSION | PHPバージョン       | 7.3     |
-| TOMCAT_VERSION     | Tomcatバージョン    | 8       |
-| WORDPRESS_VERSION  | Wordpressバージョン | 5       |
+| 変数名               | 概要                | 既定値  |
+|----------------------|---------------------|---------|
+| PHP\_APACHE\_VERSION | PHPバージョン       | 7.3     |
+| TOMCAT\_VERSION      | Tomcatバージョン    | 8       |
+| WORDPRESS\_VERSION   | Wordpressバージョン | 5       |
 
 ### 例
 
-    Docker Composeを起動する前に `.env` ファイルを作成して変数を上書きを行い指定のバージョンを起動します。
+Docker Composeを起動する前に `.env` ファイルを作成して変数を上書きを行い指定のバージョンを起動します。
 
 ```
 cat .env
