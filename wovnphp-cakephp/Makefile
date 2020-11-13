@@ -18,6 +18,7 @@ include ../common/wovnphp.mk
 
 $(APPNAME)/index.php:
 	$(COMPOSER) --ignore-platform-reqs create-project --no-interaction --prefer-dist 'cakephp/app:4.*' $(APPNAME)
+	chmod -R 777 $(WOVNPHP_INSTALL_DIR)
 
 .PHONY: cakephp
 cakephp: $(APPNAME)/index.php
