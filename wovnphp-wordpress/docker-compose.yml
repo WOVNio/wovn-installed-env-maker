@@ -25,7 +25,7 @@ services:
       MYSQL_USER: wp_user
       MYSQL_PASSWORD: password
     volumes:
-      - db:/var/lib/mysql
+      - ./data/mysql:/var/lib/mysql
 
   wp_cli:
     image: wordpress:cli
