@@ -29,7 +29,9 @@ WP_SED     ?= docker-compose run --rm $(WP_SERVICE) /bin/sed -i""
 
 .PHONY: clean-wordpress
 clean-wordpress:
+	docker-compose down -v
 	rm -rf $(WP_LOCAL_PATH)
+	rm -rf data/mysql/*
 
 $(WP_LOCAL_PATH)/index.php:
 	mkdir -p $(WP_LOCAL_PATH)
