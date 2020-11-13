@@ -14,7 +14,7 @@ services:
 
 script:
   - cd $TARGET
-  - make
+  - sudo make
   - docker-compose up -d
   - docker-compose down -v
-  - make clean
+  - sudo make clean
