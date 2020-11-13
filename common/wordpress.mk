@@ -38,6 +38,7 @@ $(WP_LOCAL_PATH)/index.php:
 	mkdir -p $(WP_LOCAL_PATH)
 	@echo Initialize for WordPress copying to $(WP_LOCAL_PATH)
 	docker-compose run --rm -w $(WP_PATH) $(WP_SERVICE) apache2 -v
+	chmod -R +w $(WP_LOCAL_PATH)
 
 .PHONY: install-wordpress-core
 install-wordpress-core: $(WP_LOCAL_PATH)/index.php
