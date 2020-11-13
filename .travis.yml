@@ -15,6 +15,8 @@ services:
 script:
   - cd $TARGET
   - make
+  - id
+  - "ls -al app/webroot"
   - docker-compose up -d
   - docker-compose down -v
   - make clean
