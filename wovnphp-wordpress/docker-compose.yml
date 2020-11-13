@@ -49,6 +49,3 @@ services:
       service: ngrok
     depends_on:
       - wordpress
-
-volumes:
-  db:
