@@ -1,0 +1,22 @@
+
+env:
+  global:
+    - GID=0
+  jobs:
+    - TARGET="wovnphp"
+    - TARGET="wovnphp-cakephp"
+    - TARGET="wovnphp-wordpress"
+    - TARGET="wovnjava"
+    - TARGET="wovnwp"
+
+language: minimal
+
+services:
+  - docker
+
+script:
+  - cd $TARGET
+  - sudo make
+  - docker-compose up -d
+  - docker-compose down -v
+  - sudo make clean
