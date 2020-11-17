@@ -6,7 +6,7 @@ WOVNの各ライブラリのインストール環境を作成するための `Ma
 ## 環境作成
 
 1. 作成したい環境のディレクトリへ移動
-2. `make` でライブラリのインストール
+2. `make` で環境の構築
 3. `docker-compose up -d` で Docker Compose を起動
 4. http://127.0.0.1:4040 Ngrokへアクセス
 5. NgrokのURLをWOVN.ioへプロジェクトの登録 URL例: `http://xxxxxxxxxxxx.ngrok.io`
@@ -61,5 +61,17 @@ cat .env
 PHP_APACHE_VERSION=5.6
 TOMCAT_VERSION=7
 WORDPRESS_VERSION=5.2.4
+```
+
+## `wovn-env-maker` コマンド
+
+`wovn-env-maker` コマンドの定義ファイルを読み込みます、もしくは、 bash_completion.d ディレクトリへコピーしてください。
+
+```
+source shell-completion/wovn-env-maker.bash
+```
+
+```
+source shell-completion/wovn-env-maker.fish
 ```
 
