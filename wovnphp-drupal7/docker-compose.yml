@@ -1,0 +1,43 @@
+version: '2.1'
+services:
+  drupal:
+    image: drupal:7-apache
+    ports:
+      - 8080:80
+    working_dir: /var/www/public
+    volumes:
+      - ./docker-cmd.sh:/usr/local/bin/docker-cmd.sh
+      - ./httpd.conf:/etc/apache2/sites-available/000-default.conf
+      - ./public:/var/www/public
+    command: ["docker-cmd.sh", "apache2-foreground"]
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+
+  drush:
+    image: drupaldocker/drush:8
+    environment:
+      - "PHP_OPTIONS=-d sendmail_path=/bin/true"
+    working_dir: /var/www/public
+    volumes:
+      - cache:/root/.drush
+      - ./public:/var/www/public
+
+  ngrok:
+    environment:
+      - "NGROK_PORT=drupal:80"
+    extends:
+      file: ../common/docker-services.yml
+      service: ngrok
+
+volumes:
+  cache:
