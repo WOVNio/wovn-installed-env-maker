@@ -5,6 +5,7 @@ env:
   jobs:
     - TARGET="wovnphp"
     - TARGET="wovnphp-cakephp"
+    - TARGET="wovnphp-movabletype"
     - TARGET="wovnphp-wordpress"
     - TARGET="wovnjava"
     - TARGET="wovnwp"
