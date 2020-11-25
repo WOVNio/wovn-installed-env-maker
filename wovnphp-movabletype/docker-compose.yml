@@ -3,7 +3,7 @@ version: '2'
 services:
   mt:
     image: wiwai/movabletype:7.4.0
-    # image: movabletype:6.7.0
+    # image: wiwai/movabletype:6.7.0
     volumes:
      - "./httpd.conf:/etc/apache2/sites-enabled/000-default.conf"
      - "./public:/var/www/html"
