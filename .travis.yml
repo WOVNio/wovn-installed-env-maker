@@ -6,6 +6,7 @@ env:
     - TARGET="wovnphp"
     - TARGET="wovnphp-cakephp"
     - TARGET="wovnphp-movabletype"
+    - TARGET="wovnphp-drupal7"
     - TARGET="wovnphp-wordpress"
     - TARGET="wovnjava"
     - TARGET="wovnwp"
