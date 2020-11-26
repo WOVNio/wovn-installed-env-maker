@@ -1,0 +1,41 @@
+version: '2.1'
+
+services:
+  mt:
+    image: wiwai/movabletype:7.4.0
+    # image: wiwai/movabletype:6.7.0
+    volumes:
+     - "./httpd.conf:/etc/apache2/sites-enabled/000-default.conf"
+     - "./public:/var/www/html"
+     - "./cgi-bin:/var/www/cgi-bin"
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mt
+      MYSQL_USER: mt
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./data/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+
+  smtp:
+    image: schickling/mailcatcher
+    ports:
+      - "1080:1080"
+      - "1025:1025"
+
+  ngrok:
+    environment:
+      - "NGROK_PORT=mt:80"
+    extends:
+      file: ../common/docker-services.yml
+      service: ngrok
+
+volumes:
+  db:
