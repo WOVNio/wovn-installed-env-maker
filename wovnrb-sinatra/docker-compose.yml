@@ -1,0 +1,22 @@
+version: '2.1'
+services:
+  app:
+    build:
+      context: .
+      args:
+        RUBY_VERSION: 2.7
+    image: wovnrb-app:ruby-${RUBY_VERSION:-2.7}
+    ports:
+      - 8080:4567
+    working_dir: /app
+    volumes:
+      - ./app:/app
+
+  ngrok:
+    environment:
+      - "NGROK_PORT=app:4567"
+    extends:
+      file: ../common/docker-services.yml
+      service: ngrok
+    depends_on:
+      - app
