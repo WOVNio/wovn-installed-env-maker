@@ -1,0 +1,6 @@
+buildCache {
+	local {
+		directory = "${settingsDir}/.gradle/build-cache"
+		removeUnusedEntriesAfterDays = 1
+	}
+}

@@ -1,0 +1,7 @@
+.tmp/
+.gradle/
+.settings/
+.project
+
+build/
+tomcat-webapps/
