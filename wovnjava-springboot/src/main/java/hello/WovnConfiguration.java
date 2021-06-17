@@ -14,7 +14,8 @@ class WovnConfiguration {
         FilterRegistrationBean<WovnServletFilter> registration = new FilterRegistrationBean<WovnServletFilter>();
         registration.setFilter(new WovnServletFilter());
         registration.addUrlPatterns("/*");
-        registration.addInitParameter("projectToken", "G1TTmh");
+        // NOTE: Change it to your token.
+        registration.addInitParameter("projectToken", "Token");
         registration.addInitParameter("defaultLang", "ja");
         registration.addInitParameter("supportedLangs", "ja,en,fr");
         registration.addInitParameter("urlPattern", "query");

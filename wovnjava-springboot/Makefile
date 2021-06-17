@@ -1,9 +1,11 @@
 
 .PHONY: all
-all: clean build
+all: clean build deploy
 
 .PHONY: clean
-clean: clean-wovnjava
+clean:
+	docker-compose run --rm gradle gradle clean
+	rm -f tomcat-webapps/ROOT.war
 
 .PHONY: build
 build:
