@@ -11,10 +11,10 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 class WovnConfiguration {
     @Bean
     public FilterRegistrationBean wovnFilterRegistration() {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
+        FilterRegistrationBean<WovnServletFilter> registration = new FilterRegistrationBean<WovnServletFilter>();
         registration.setFilter(new WovnServletFilter());
         registration.addUrlPatterns("/*");
-        registration.addInitParameter("projectToken", "Token");
+        registration.addInitParameter("projectToken", "G1TTmh");
         registration.addInitParameter("defaultLang", "ja");
         registration.addInitParameter("supportedLangs", "ja,en,fr");
         registration.addInitParameter("urlPattern", "query");
