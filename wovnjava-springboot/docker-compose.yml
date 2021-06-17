@@ -1,0 +1,28 @@
+version: '2.1'
+services:
+  tomcat:
+    extends:
+      file: ../common/docker-services.yml
+      service: tomcat
+    volumes:
+      - ./WEB-INF:/usr/local/tomcat/webapps/ROOT/WEB-INF
+      - ./tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+
+  ngrok:
+    environment:
+      - "NGROK_PORT=tomcat:8080"
+    extends:
+      file: ../common/docker-services.yml
+      service: ngrok
+
+  gradle:
+    image: gradle:7-jdk8
+    working_dir: /home/gradle/myapp
+    volumes:
+      - ./:/home/gradle/myapp
+
+  java:
+    image: openjdk:8-jdk
+    working_dir: /usr/src/
+    volumes:
+      - ./:/usr/src/
