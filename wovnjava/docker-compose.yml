@@ -7,10 +7,3 @@ services:
     volumes:
       - ./WEB-INF:/usr/local/tomcat/webapps/ROOT/WEB-INF
       - ./tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
-
-  ngrok:
-    environment:
-      - "NGROK_PORT=tomcat:8080"
-    extends:
-      file: ../common/docker-services.yml
-      service: ngrok

@@ -8,9 +8,6 @@ WOVNの各ライブラリのインストール環境を作成するための `Ma
 1. 作成したい環境のディレクトリへ移動
 2. `make` で環境の構築
 3. `docker-compose up -d` で Docker Compose を起動
-4. http://127.0.0.1:4040 Ngrokへアクセス
-5. NgrokのURLをWOVN.ioへプロジェクトの登録 URL例: `http://xxxxxxxxxxxx.ngrok.io`
-6. 発行されたプロジェクトトークンを `wovn.ini` 等へ設定
 
 ## 環境削除
 
@@ -24,7 +21,7 @@ WOVNの各ライブラリのインストール環境を作成するための `Ma
 | WOVNPHP\_BRANCH\_NAME        | WOVN.phpのインストールバージョン       | master  |
 | WOVNPHP\_HTACCESS            | サンプル .htaccess のインストール      | yes     |
 | WOVNPHP\_WOVN\_INDEX         | wovn_index.phpのインストール           | yes     |
-| WOVNJAVA\_VERSION            | WOVN.javaのインストールバージョン      | 1.2.0   |
+| WOVNJAVA\_VERSION            | WOVN.javaのインストールバージョン      | 1.7.2   |
 | WP\_LANG\_JA                 | 日本語UIのインストール                 | yes     |
 | WP\_MULTISITE                | WordPressのマルチサイト化              | yes     |
 | WP\_ADMIN\_USER              | WordPress ユーザ                       | admin   |

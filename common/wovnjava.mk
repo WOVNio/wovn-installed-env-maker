@@ -1,5 +1,5 @@
 
-WOVNJAVA_VERSION      ?= 1.2.0
+WOVNJAVA_VERSION      ?= 1.7.2
 WOVNJAVA_DOWNLOAD_URL  = https://jitpack.io/com/github/wovnio/wovnjava/$(WOVNJAVA_VERSION)/wovnjava-$(WOVNJAVA_VERSION)-jar-with-dependencies.jar
 TOMCAT_WEBINF          = WEB-INF
 WOVNJAVA_INSTALL_DIR   = $(TOMCAT_WEBINF)/lib
