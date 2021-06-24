@@ -30,12 +30,5 @@ services:
       - "1080:1080"
       - "1025:1025"
 
-  ngrok:
-    environment:
-      - "NGROK_PORT=mt:80"
-    extends:
-      file: ../common/docker-services.yml
-      service: ngrok
-
 volumes:
   db:

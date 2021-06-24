@@ -41,11 +41,3 @@ services:
       file: ../common/docker-services.yml
       service: mail-catcher
 
-  ngrok:
-    environment:
-      - "NGROK_PORT=wordpress:8080"
-    extends:
-      file: ../common/docker-services.yml
-      service: ngrok
-    depends_on:
-      - wordpress

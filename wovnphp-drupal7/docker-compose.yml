@@ -32,12 +32,5 @@ services:
       - cache:/root/.drush
       - ./public:/var/www/public
 
-  ngrok:
-    environment:
-      - "NGROK_PORT=drupal:80"
-    extends:
-      file: ../common/docker-services.yml
-      service: ngrok
-
 volumes:
   cache:

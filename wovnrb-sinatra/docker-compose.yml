@@ -12,11 +12,3 @@ services:
     volumes:
       - ./app:/app
 
-  ngrok:
-    environment:
-      - "NGROK_PORT=app:4567"
-    extends:
-      file: ../common/docker-services.yml
-      service: ngrok
-    depends_on:
-      - app

@@ -22,10 +22,3 @@ services:
     working_dir: /var/www/html
     volumes:
       - ./public:/var/www/html
-
-  ngrok:
-    environment:
-      - "NGROK_PORT=apache:80"
-    extends:
-      file: ../common/docker-services.yml
-      service: ngrok

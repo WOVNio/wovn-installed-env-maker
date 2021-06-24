@@ -56,13 +56,3 @@ services:
     extends:
       file: ../common/docker-services.yml
       service: mail-catcher
-
-  ngrok:
-    environment:
-      - "NGROK_PORT=apache:80"
-    extends:
-      file: ../common/docker-services.yml
-      service: ngrok
-    depends_on:
-      - apache
-      - nginx
