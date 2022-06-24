@@ -32,6 +32,8 @@ else
 WP_CLI     ?= docker-compose run --rm -w $(WP_PATH) wp_cli wp
 endif
 
+WP_WOVNIO_PLUGIN_VERSION ?= $(shell $(WP_CLI) plugin search wovn-io --field=version --format=csv)
+
 .PHONY: clean-wordpress
 clean-wordpress:
 	docker-compose down -v
@@ -66,7 +68,8 @@ endif
 .PHONY: install-wovnio-plugin
 install-wovnio-plugin:
 ifeq ($(WP_INSTALL_WOVNIO_PLUGIN),yes)
-	$(WP_CLI) plugin install wovn-io --activate
+	@echo wovn-io plugin version $(WP_WOVNIO_PLUGIN_VERSION)
+	$(WP_CLI) plugin install wovn-io --activate --version=$(WP_WOVNIO_PLUGIN_VERSION)
 endif
 
 .PHONY: install-wordpress
