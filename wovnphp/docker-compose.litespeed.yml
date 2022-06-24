@@ -1,0 +1,8 @@
+version: '2.1'
+services:
+  litespeed:
+    image: litespeedtech/litespeed:5.4.12-lsphp74
+    ports:
+      - 8080:80
+    volumes:
+      - ./public:/var/www/vhosts/localhost/html
