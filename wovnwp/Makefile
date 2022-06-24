@@ -1,5 +1,6 @@
 WP_INSTALL_WOVNIO_PLUGIN  := yes
 WP_INSTALL_POPULAR_PLUGIN := no
+WP_WOVNIO_PLUGIN_VERSION  := $(shell $(WP_CLI) plugin search wovn-io --field=version --format=csv)
 WP_SERVICE = apache
 
 .PHONY: all
