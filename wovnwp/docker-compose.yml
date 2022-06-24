@@ -45,6 +45,7 @@ services:
 
   wp_cli:
     image: wordpress:cli
+    environment: *wordpress_environemt
     volumes:
       - ./public:/var/www/html
       - ./php.ini:/usr/local/etc/php/php.ini
