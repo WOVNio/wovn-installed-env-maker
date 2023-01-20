@@ -29,6 +29,11 @@ services:
 
   wp_cli:
     image: wordpress:cli
+    environment:
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wp_user
+      WORDPRESS_DB_PASSWORD: password
     volumes:
       - ./public:/var/www/html
       - ./php.ini:/usr/local/etc/php/php.ini
