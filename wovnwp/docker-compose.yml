@@ -1,7 +1,7 @@
 version: '2.1'
 services:
   apache:
-    image: wordpress:${WORDPRESS_VERSION:-5}-apache
+    image: wordpress:${WORDPRESS_VERSION:-6}-apache
     ports:
       - 8080:80
     environment: &wordpress_environemt
