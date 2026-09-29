@@ -5,12 +5,13 @@ WOVNの各ライブラリのインストール環境を作成するための `Ma
 
 ## 環境作成
 
-1. 作成したい環境のディレクトリへ移動
-2. `make` で環境の構築
-3. `docker-compose up -d` で Docker Compose を起動
-4. http://127.0.0.1:4040 Ngrokへアクセス
-5. NgrokのURLをWOVN.ioへプロジェクトの登録 URL例: `http://xxxxxxxxxxxx.ngrok.io`
-6. 発行されたプロジェクトトークンを `wovn.ini` 等へ設定
+1. `cp common/ngrok.env.example common/ngrok.env` を実行し、`NGROK_AUTHTOKEN` に自分の Ngrok トークンを設定（初回のみ）
+2. 作成したい環境のディレクトリへ移動
+3. `make` で環境の構築
+4. `docker-compose up -d` で Docker Compose を起動
+5. http://127.0.0.1:4040 Ngrokへアクセス
+6. NgrokのURLをWOVN.ioへプロジェクトの登録 URL例: `https://xxxxxxxxxxxx.ngrok-free.app`
+7. 発行されたプロジェクトトークンを `wovn.ini` 等へ設定
 
 ## 環境削除
 
