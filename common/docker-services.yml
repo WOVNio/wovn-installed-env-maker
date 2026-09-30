@@ -3,7 +3,12 @@ services:
   ## ngrok allows you to expose a web server running on your local machine to the internet,
   ## Access to http://127.0.0.1:4040 , Ngrok Web Interface.
   ngrok:
-    image: lukaszlach/ngrok
+    image: ngrok/ngrok:latest
+    entrypoint: ["/bin/sh", "-c", "exec ngrok --config=/var/lib/ngrok/ngrok.yml http --log stdout $$NGROK_PORT"]
+    ## Copy ngrok.env.example to ngrok.env and set your own token.
+    env_file:
+      - path: ngrok.env
+        required: false
     ports:
       - 4040:4040
 
