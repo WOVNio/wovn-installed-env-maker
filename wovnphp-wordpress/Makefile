@@ -14,7 +14,7 @@ clean: clean-wovnphp clean-wordpress
 
 .PHONY: install
 install: install-wordpress install-wovnphp
-	$(WP_SED) -e "0,/<?php/ s/<?php/<?php\n\nrequire_once\(__DIR__.\'\/WOVN.php\/src\/wovn_interceptor.php\'\);\n/" index.php
+	$(WP_SED) -e "0,/<?php/ s/<?php/<?php\n\nrequire_once\(__DIR__.\'\/WOVN.php\/src\/wovn_interceptor.php\'\);\n/" wp-config.php
 ifeq ($(WP_MULTISITE),yes)
 	@echo Override the .htaccess file with the appropriate multisite rewrite rules.
 	cp -f htaccess.multisite.subfolder $(WP_LOCAL_PATH)/.htaccess
