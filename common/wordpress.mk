@@ -24,7 +24,7 @@ WP_POPULAR_PLUGIN_LIST    ?= all-in-one-seo-pack \
 	wp-multibyte-patch
 
 WP_SERVICE ?= wordpress
-WP_SED     ?= docker-compose run --rm -w $(WP_PATH) $(WP_SERVICE) /bin/sed -i""
+WP_SED     ?= docker-compose run --rm --user 0 --entrypoint sh -w $(WP_PATH) $(WP_SERVICE) -c 'for f; do :; done; /bin/sed "$$@" > /tmp/_sed_out && cat /tmp/_sed_out > "$$f"' _
 
 ifeq ($(TRAVIS),true)
 WP_CLI     ?= docker-compose run --user 0 --rm -w $(WP_PATH) wp_cli wp --allow-root
