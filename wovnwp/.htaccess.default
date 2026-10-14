@@ -1,0 +1,10 @@
+# Increase the limit for restoring from a backup 
+# using the “All-in-One WP Migration and Backup” plugin.
+
+LimitRequestBody 0
+
+php_value upload_max_filesize 32G
+php_value post_max_size 32G
+php_value memory_limit 256M
+php_value max_execution_time 600
+php_value max_input_time 600
