@@ -2,7 +2,7 @@
 
 function wovn-env-maker {
     argv=$1
-    curl -L -S https://github.com/iwai-wovn/wovn-installed-env-maker/archive/master.zip -o maker.zip
+    curl -L -S https://github.com/WOVNio/wovn-installed-env-maker/archive/master.zip -o maker.zip
     unzip maker.zip `zipinfo -1 maker.zip | grep -E "wovn-installed-env-maker-master/(?:common|$argv)/"`
     rm -f maker.zip
     mv wovn-installed-env-maker-master/* .
@@ -14,7 +14,7 @@ function __complete_wovn-env-maker_arguments {
     fi
 
     if [ ! -n "$__complete_wovn_env_maker_arguments_names" ]; then
-        __complete_wovn_env_maker_arguments_names=`curl -Ss 'https://api.github.com/repos/iwai-wovn/wovn-installed-env-maker/contents/?ref=master' | jq -r '.[]|select(.type == "dir")|.path'`
+        __complete_wovn_env_maker_arguments_names=`curl -Ss 'https://api.github.com/repos/WOVNio/wovn-installed-env-maker/contents/?ref=master' | jq -r '.[]|select(.type == "dir")|.path'`
     fi
 
     COMPREPLY=($(compgen -W "$__complete_wovn_env_maker_arguments_names" -- "${COMP_WORDS[1]}"))
