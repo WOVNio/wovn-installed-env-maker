@@ -3,6 +3,8 @@
 WOVNの各ライブラリのインストール環境を作成するための `Makefile`, `docker-compose.yml` を含んでいます。
 ライブラリの動作検証を想定したものになっています。なお、動作を保証するものではありません。
 
+![demo](wovn-env-install-demo.gif)
+
 ## 環境作成
 
 1. `cp common/ngrok.env.example common/ngrok.env` を実行し、`NGROK_AUTHTOKEN` に自分の Ngrok トークンを設定（初回のみ）
